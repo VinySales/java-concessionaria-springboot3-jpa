@@ -10,7 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -24,18 +23,18 @@ public class Car implements Serializable {
 	
 	@JsonIgnore
 	@OneToOne
-	@MapsId
 	private CarModel model;
-	private Integer year;
+	
+	@OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+	private CarSale carSale;
 	
 	public Car() {
 	}
 	
-	public Car(Long id, CarModel model, Integer year) {
+	public Car(Long id, CarModel model) {
 		super();
 		this.id = id;
 		this.model = model;
-		this.year = year;
 	}
 
 	public Long getId() {
@@ -53,13 +52,13 @@ public class Car implements Serializable {
 	public void setModel(CarModel model) {
 		this.model = model;
 	}
-
-	public Integer getYear() {
-		return year;
+	
+	public CarSale getCarSale() {
+		return carSale;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setCarSale(CarSale carSale) {
+		this.carSale = carSale;
 	}
 
 	@Override

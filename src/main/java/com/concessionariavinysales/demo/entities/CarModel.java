@@ -3,8 +3,6 @@ package com.concessionariavinysales.demo.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -35,11 +32,10 @@ public class CarModel implements Serializable {
 	public CarModel() {
 	}
 
-	public CarModel(Long id, String name, Car car) {
+	public CarModel(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.car = car;
 	}
 
 	public Long getId() {
@@ -74,7 +70,6 @@ public class CarModel implements Serializable {
 		this.car = car;
 	}
 	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

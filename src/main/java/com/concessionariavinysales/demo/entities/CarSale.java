@@ -10,11 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 
-/*@Entity*/
+@Entity
 public class CarSale implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	/*
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,12 +25,7 @@ public class CarSale implements Serializable {
 	
 	@OneToOne
 	@MapsId
-	private CarBrand brand;
-	
-	@OneToOne
-	@MapsId
-	private CarModel model;
-	private Integer year;
+	private Car car;
 	private Double km;
 	private Double price;
 	private Boolean sold = false;
@@ -38,14 +33,12 @@ public class CarSale implements Serializable {
 	public CarSale() {
 	}
 
-	public CarSale(Long id, CarOwner owner, CarBrand brand, CarModel model, Integer year, Double km, Double price,
+	public CarSale(Long id, CarOwner owner, Car car, Double km, Double price,
 			Boolean sold) {
 		super();
 		this.id = id;
 		this.owner = owner;
-		this.brand = brand;
-		this.model = model;
-		this.year = year;
+		this.car = car;
 		this.km = km;
 		this.price = price;
 		this.sold = sold;
@@ -65,30 +58,6 @@ public class CarSale implements Serializable {
 
 	public void setOwner(CarOwner owner) {
 		this.owner = owner;
-	}
-
-	public CarBrand getBrand() {
-		return brand;
-	}
-
-	public void setBrand(CarBrand brand) {
-		this.brand = brand;
-	}
-
-	public CarModel getModel() {
-		return model;
-	}
-
-	public void setModel(CarModel model) {
-		this.model = model;
-	}
-
-	public Integer getYear() {
-		return year;
-	}
-
-	public void setYear(Integer year) {
-		this.year = year;
 	}
 
 	public Double getKm() {
@@ -131,5 +100,13 @@ public class CarSale implements Serializable {
 		CarSale other = (CarSale) obj;
 		return Objects.equals(id, other.id);
 	}
-	*/
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 }
