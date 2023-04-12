@@ -32,10 +32,11 @@ public class CarModel implements Serializable {
 	public CarModel() {
 	}
 
-	public CarModel(Long id, String name) {
+	public CarModel(Long id, String name, CarBrand brand) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.brand = brand;
 	}
 
 	public Long getId() {
