@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.concessionariavinysales.demo.entities.CarBrand;
-import com.concessionariavinysales.demo.services.CarBrandService;
+import com.concessionariavinysales.demo.entities.CarOwner;
+import com.concessionariavinysales.demo.services.CarOwnerService;
 
 @RestController
-@RequestMapping(value = "/carBrands")
-public class CarBrandResource {
+@RequestMapping(value = "/carOwners")
+public class CarOwnerResource {
 
 	@Autowired
-	private CarBrandService service;
+	private CarOwnerService service;
 
 	@GetMapping
-	public ResponseEntity<List<CarBrand>> findAll() {
-		List<CarBrand> list = service.findAll();
+	public ResponseEntity<List<CarOwner>> findAll() {
+		List<CarOwner> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<CarBrand> findById(@PathVariable Long id) {
-		CarBrand obj = service.findById(id);
+	public ResponseEntity<CarOwner> findById(@PathVariable Long id) {
+		CarOwner obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 

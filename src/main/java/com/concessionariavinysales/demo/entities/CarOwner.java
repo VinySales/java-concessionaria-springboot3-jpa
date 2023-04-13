@@ -1,12 +1,17 @@
 package com.concessionariavinysales.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class CarOwner implements Serializable {
@@ -19,6 +24,10 @@ public class CarOwner implements Serializable {
 	private String name;
 	private String email;
 	private String phone;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "owner")
+	private List<CarSale> carSales = new ArrayList<>();
 	
 	public CarOwner() {
 	}
@@ -61,6 +70,10 @@ public class CarOwner implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public List<CarSale> getCarSales() {
+		return carSales;
 	}
 
 	@Override

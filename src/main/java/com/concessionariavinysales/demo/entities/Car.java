@@ -3,13 +3,13 @@ package com.concessionariavinysales.demo.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -21,8 +21,10 @@ public class Car implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@JsonIgnore
-	@OneToOne
+	//@JsonIgnore
+	//@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "model_id")
 	private CarModel model;
 	
 	@OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
