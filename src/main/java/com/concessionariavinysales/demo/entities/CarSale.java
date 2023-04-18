@@ -14,29 +14,30 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class CarSale implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private CarOwner owner;
-	
-	@OneToOne
-	@MapsId
+
+	//@OneToOne
+	//@MapsId
+	@ManyToOne
+	@JoinColumn(name = "car_id")
 	private Car car;
 	private Double km;
 	private Double price;
 	private Boolean sold = false;
-	
+
 	public CarSale() {
 	}
 
-	public CarSale(Long id, CarOwner owner, Car car, Double km, Double price,
-			Boolean sold) {
+	public CarSale(Long id, CarOwner owner, Car car, Double km, Double price, Boolean sold) {
 		super();
 		this.id = id;
 		this.owner = owner;

@@ -1,9 +1,7 @@
 package com.concessionariavinysales.demo.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class CarModel implements Serializable {
@@ -26,10 +23,6 @@ public class CarModel implements Serializable {
 	@JoinColumn(name = "brand_id")
 	private CarBrand brand;
 	private String name;
-	
-	//@OneToOne(mappedBy = "model", cascade = CascadeType.ALL)
-	@OneToMany(mappedBy = "model")
-	private Set<Car> cars =  new HashSet<>();
 	
 	public CarModel() {
 	}
@@ -63,10 +56,6 @@ public class CarModel implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public Set<Car> getCars() {
-		return cars;
 	}
 
 	@Override

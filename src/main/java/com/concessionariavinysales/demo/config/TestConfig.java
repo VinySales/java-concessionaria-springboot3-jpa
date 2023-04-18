@@ -51,12 +51,12 @@ public class TestConfig implements CommandLineRunner {
 		Car c2 = new Car(null, cm2);
 		
 		CarSale cs1 = new CarSale(null, co1, c1, 51000.0, 46000.0, false);
-		CarSale cs2 = new CarSale(null, co1, c1, 110000.0, 21000.0, false);
+		CarSale cs2 = new CarSale(null, co2, c2, 110000.0, 21000.0, false);
 		
 		carOwnerRepository.saveAll(Arrays.asList(co1, co2));
 		carBrandRepository.saveAll(Arrays.asList(cb1, cb2));
 		carModelRepository.saveAll(Arrays.asList(cm1, cm2));
 		carRepository.saveAll(Arrays.asList(c1, c2));
-		//carSaleRepository.saveAll(Arrays.asList(cs1, cs2));
+		carSaleRepository.saveAll(Arrays.asList(cs1, cs2));
 	}
 }

@@ -1,7 +1,11 @@
 package com.concessionariavinysales.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -10,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -21,14 +26,15 @@ public class Car implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	//@JsonIgnore
-	//@OneToOne
 	@ManyToOne
 	@JoinColumn(name = "model_id")
 	private CarModel model;
 	
-	@OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
-	private CarSale carSale;
+	//@OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+	//private CarSale carSale;
+	@JsonIgnore
+	@OneToMany(mappedBy = "car")
+	private List<CarSale> carSales = new ArrayList<>();
 	
 	public Car() {
 	}
@@ -55,13 +61,17 @@ public class Car implements Serializable {
 		this.model = model;
 	}
 	
-	public CarSale getCarSale() {
-		return carSale;
+	public List<CarSale> getCarSales() {
+		return carSales;
 	}
+	
+	//public CarSale getCarSale() {
+		//return carSale;
+	//}
 
-	public void setCarSale(CarSale carSale) {
-		this.carSale = carSale;
-	}
+	//public void setCarSale(CarSale carSale) {
+		//this.carSale = carSale;
+	//}
 
 	@Override
 	public int hashCode() {
