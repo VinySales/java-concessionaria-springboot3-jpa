@@ -24,4 +24,8 @@ public class CarBrandService {
 		return obj.get();
 	}
 	
+	public CarBrand insert(CarBrand obj) {
+		return repository.save(obj);
+	}
+	
 }
