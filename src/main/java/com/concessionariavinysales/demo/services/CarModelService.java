@@ -24,4 +24,7 @@ public class CarModelService {
 		return obj.get();
 	}
 	
+	public CarModel insert(CarModel obj) {
+		return repository.save(obj);
+	}
 }
