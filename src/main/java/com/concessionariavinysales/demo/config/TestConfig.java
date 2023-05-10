@@ -40,6 +40,7 @@ public class TestConfig implements CommandLineRunner {
 
 		CarOwner co1 = new CarOwner(null, "Vinicius Sales", "vinysales@hotmail.com", "+5511942556459");
 		CarOwner co2 = new CarOwner(null, "Alessandro Costa", "alessandro@hotmail.com", "+551194251755");
+		CarOwner co3 = new CarOwner(null, "Jane Sales", "jane@hotmail.com", "+5511998509920");
 		
 		CarBrand cb1 = new CarBrand(null, "Peugeot");
 		CarBrand cb2 = new CarBrand(null, "Chevrolet");
@@ -53,7 +54,7 @@ public class TestConfig implements CommandLineRunner {
 		CarSale cs1 = new CarSale(null, co1, c1, 51000.0, 46000.0, false);
 		CarSale cs2 = new CarSale(null, co2, c2, 110000.0, 21000.0, false);
 		
-		carOwnerRepository.saveAll(Arrays.asList(co1, co2));
+		carOwnerRepository.saveAll(Arrays.asList(co1, co2, co3));
 		carBrandRepository.saveAll(Arrays.asList(cb1, cb2));
 		carModelRepository.saveAll(Arrays.asList(cm1, cm2));
 		carRepository.saveAll(Arrays.asList(c1, c2));

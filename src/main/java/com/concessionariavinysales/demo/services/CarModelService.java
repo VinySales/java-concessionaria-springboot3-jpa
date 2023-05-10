@@ -23,8 +23,13 @@ public class CarModelService {
 		Optional<CarModel> obj = repository.findById(id);
 		return obj.get();
 	}
-	
+
 	public CarModel insert(CarModel obj) {
 		return repository.save(obj);
+	}
+
+	public void delete(Long id) {
+		CarModel carModel = findById(id);
+		repository.delete(carModel);
 	}
 }

@@ -28,4 +28,8 @@ public class CarOwnerService {
 		return repository.save(obj);
 	}
 	
+	public void delete(Long id) {
+		CarOwner carOwner = findById(id);
+		repository.delete(carOwner);
+	}
 }
